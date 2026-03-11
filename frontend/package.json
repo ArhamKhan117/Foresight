@@ -1,0 +1,41 @@
+{
+  "name": "hedera-prediction-market-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Frontend application for Hedera Prediction Market - A Decentralized Prediction Market on Hedera",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "bn.js": "^5.2.1",
+    "ethers": "^6.10.0",
+    "framer-motion": "^12.10.5",
+    "lightweight-charts": "^5.1.0",
+    "next": "15.2.1",
+    "postcss": "^8.5.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.5.0",
+    "react-multi-carousel": "^2.8.5",
+    "react-spinners": "^0.17.0",
+    "react-toastify": "^11.0.5"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.0.12",
+    "@types/bn.js": "^5.1.6",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-icons": "^3.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.1",
+    "tailwindcss": "^4.0.12",
+    "typescript": "^5"
+  }
+}
