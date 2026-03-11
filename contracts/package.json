@@ -1,0 +1,22 @@
+{
+  "name": "hedera-prediction-market-contracts",
+  "version": "1.0.0",
+  "description": "Hedera Prediction Market Smart Contracts",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network hederaTestnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network hederaMainnet",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.3.1",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@hashgraph/sdk": "^2.40.0",
+    "abdk-libraries-solidity": "^3.2.0"
+  }
+}
