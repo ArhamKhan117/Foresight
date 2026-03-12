@@ -1,0 +1,60 @@
+/* Landing Page — Brutalist / Neo-Brutalist styles inspired by BANGR */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap');
+
+.landing-page {
+  --fs-yellow: #ecfd00;
+  --fs-pink: #ff00ff;
+  --fs-cyan: #00ffff;
+  --fs-blue: #07b3ff;
+  --fs-black: #121212;
+  --fs-white: #ffffff;
+  --fs-gray: #f0f0f0;
+
+  font-family: 'Space Mono', monospace;
+  background-color: var(--fs-gray);
+  background-image: radial-gradient(#000 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: #000;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.landing-page * {
+  box-sizing: border-box;
+}
+
+/* Font classes */
+.font-display {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Space Mono', monospace;
+}
+
+/* Hard shadow utilities */
+.shadow-hard {
+  box-shadow: 8px 8px 0px 0px #000000;
+}
+
+.shadow-hard-sm {
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+
+/* Marquee */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
