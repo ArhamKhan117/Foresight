@@ -10,6 +10,17 @@ import { connectMongoDB, initialSettings } from "./config";
 import { startAutoResolver } from "./services/autoResolver";
 import { initializeForeToken } from "./services/htsService";
 
+// ============ Global Error Handlers — keep server alive on crashes ============
+process.on("uncaughtException", (err) => {
+    console.error("🔴 Uncaught Exception:", err.message);
+    console.error(err.stack);
+});
+
+process.on("unhandledRejection", (reason: any) => {
+    console.error("🔴 Unhandled Rejection:", reason?.message || reason);
+    if (reason?.stack) console.error(reason.stack);
+});
+
 // Connect to MongoDB
 connectMongoDB();
 
@@ -47,6 +58,14 @@ app.get("/health", (req, res) => {
 
 const port = process.env.PORT || "9000";
 const server = http.createServer(app);
+
+// Express catch-all error handler — prevents crashes from unhandled route errors
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error("🔴 Express error:", err.message);
+    if (!res.headersSent) {
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 
 server.listen(port, () => {
     console.log(`------------------------------------------------------------`);
