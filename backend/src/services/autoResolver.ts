@@ -4,10 +4,12 @@ import {
   proposeAnswer,
   settleProposal,
   finalizeFromOracle,
+  resolveMarket,
   requestMultiOutcomeOracleResolution,
   proposeMultiOutcomeAnswer,
   settleMultiOutcomeProposal,
   finalizeMultiOutcomeFromOracle,
+  resolveMultiOutcomeEvent,
   getMultiOutcomeEvent,
   getMultiOutcomeProposal,
   canSettleMultiOutcome,
@@ -30,6 +32,9 @@ const POLL_INTERVAL = 60_000;
 // Cooldown: skip markets that failed recently (5 min cooldown)
 const FAIL_COOLDOWN = 5 * 60 * 1000;
 const failedMarkets = new Map<string, number>();
+
+// Stale oracle timeout: force-close markets stuck in oracle flow for 48 hours
+const STALE_ORACLE_TIMEOUT = 48 * 60 * 60; // 48 hours in seconds
 
 /**
  * Free JSON-RPC provider for READ-ONLY calls (no gas cost).
@@ -237,6 +242,23 @@ export const startAutoResolver = () => {
 
           const oracleRequestId = onChain.oracleRequestId;
 
+          // Stale oracle check: if resolution date was 48+ hours ago and still active, force-close
+          const secondsSinceExpiry = Math.floor(Date.now() / 1000) - resolutionDate;
+          if (secondsSinceExpiry >= STALE_ORACLE_TIMEOUT && oracleRequestId !== ZERO_HASH) {
+            console.log(`🤖 Auto-resolver: market ${dbMarket.market} stuck in oracle for ${Math.floor(secondsSinceExpiry / 3600)}h — force-closing as NO`);
+            const result = await resolveMarket(dbMarket.market, false);
+            if (result.success) {
+              await MarketModel.findByIdAndUpdate(dbMarket._id, { marketStatus: "CLOSED" });
+              console.log(`🤖 Auto-resolver: ${dbMarket.market} force-closed (stale oracle)`);
+              if (dbMarket.hcsTopicId) {
+                submitHCSMessage(dbMarket.hcsTopicId, "MARKET_FORCE_CLOSED", {
+                  marketId: dbMarket.market, reason: "Oracle stale for 48+ hours", resolvedAs: "NO",
+                });
+              }
+            }
+            continue;
+          }
+
           // Step 1: No oracle request yet → request it (WRITE — costs gas)
           if (oracleRequestId === ZERO_HASH) {
             console.log(`🤖 Auto-resolver: requesting oracle for ${dbMarket.market}`);
@@ -397,6 +419,23 @@ export const startAutoResolver = () => {
 
             const oracleRequestId = onChain.oracleRequestId;
 
+            // Stale oracle check: if resolution date was 48+ hours ago and still active, force-close as No Winner
+            const secondsSinceExpiry = Math.floor(Date.now() / 1000) - resolutionDate;
+            if (secondsSinceExpiry >= STALE_ORACLE_TIMEOUT && oracleRequestId !== ZERO_HASH) {
+              console.log(`🤖 Auto-resolver: multi-outcome ${eventGroupId} stuck in oracle for ${Math.floor(secondsSinceExpiry / 3600)}h — force-closing as No Winner`);
+              const result = await resolveMultiOutcomeEvent(eventGroupId, -1);
+              if (result.success) {
+                await MarketModel.updateMany({ eventGroupId }, { marketStatus: "CLOSED" });
+                console.log(`🤖 Auto-resolver: multi-outcome ${eventGroupId} force-closed (stale oracle)`);
+                if (hcsTopicId) {
+                  submitHCSMessage(hcsTopicId, "EVENT_FORCE_CLOSED", {
+                    eventGroupId, reason: "Oracle stale for 48+ hours", resolvedAs: "No Winner",
+                  });
+                }
+              }
+              continue;
+            }
+
             // Step 1: No oracle request yet → request it
             if (oracleRequestId === ZERO_HASH) {
               console.log(`🤖 Auto-resolver: requesting multi-outcome oracle for ${eventGroupId}`);
@@ -486,6 +525,29 @@ export const startAutoResolver = () => {
       }
     } catch (err) {
       console.error("🤖 Auto-resolver poll error:", err);
+    }
+
+    // ============ Expired PENDING Markets ============
+    // Close pending markets whose resolution date has passed (no point keeping them)
+    try {
+      const now = new Date();
+      const pendingMarkets = await MarketModel.find({ marketStatus: "PENDING" });
+      for (const pm of pendingMarkets) {
+        const resDate = new Date(pm.date);
+        if (resDate <= now) {
+          await MarketModel.findByIdAndUpdate(pm._id, { marketStatus: "CLOSED" });
+          console.log(`🤖 Auto-resolver: PENDING market ${pm.market || pm.eventGroupId || pm._id} expired — closed`);
+          // Close siblings for multi-outcome
+          if (pm.eventGroupId) {
+            await MarketModel.updateMany(
+              { eventGroupId: pm.eventGroupId, marketStatus: "PENDING" },
+              { marketStatus: "CLOSED" }
+            );
+          }
+        }
+      }
+    } catch (err) {
+      console.error("🤖 Auto-resolver: error closing expired PENDING markets:", err);
     }
   }, POLL_INTERVAL);
 };

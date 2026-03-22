@@ -27,7 +27,9 @@ export type HCSMessageType =
   | "MARKET_FINALIZED"
   | "EVENT_FINALIZED"
   | "WINNINGS_CLAIMED"
-  | "LP_CLAIMED";
+  | "LP_CLAIMED"
+  | "MARKET_FORCE_CLOSED"
+  | "EVENT_FORCE_CLOSED";
 
 interface HCSMessage {
   type: HCSMessageType;

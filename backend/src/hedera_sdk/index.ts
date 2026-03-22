@@ -573,6 +573,27 @@ export const isMultiOutcomeOracleResolved = async (questionId: string): Promise<
     }
 };
 
+/**
+ * Resolve multi-outcome event directly (admin only, bypasses oracle)
+ */
+export const resolveMultiOutcomeEvent = async (eventId: string, winningOutcome: number) => {
+    try {
+        const client = getHederaClient();
+        const functionData = multiOutcomeEventInterface.encodeFunctionData("resolveEvent", [eventId, winningOutcome]);
+        const tx = new ContractExecuteTransaction()
+            .setContractId(multiOutcomeEventContract)
+            .setGas(300000)
+            .setFunctionParameters(Buffer.from(functionData.slice(2), "hex"));
+        const response = await tx.execute(client);
+        const receipt = await response.getReceipt(client);
+        console.log(`✅ Multi-outcome event resolved directly for ${eventId}. Status: ${receipt.status}`);
+        return { success: true };
+    } catch (error) {
+        console.error("❌ Error resolving multi-outcome event:", error);
+        return { success: false, error };
+    }
+};
+
 export {
     initializeHederaClient,
     getHederaClient,

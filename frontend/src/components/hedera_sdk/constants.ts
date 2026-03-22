@@ -21,8 +21,8 @@ export const USER_BOND = 10000 * 10 ** 8; // 10,000 HBAR
 // Hedera Token Service precompile address
 export const HTS_PRECOMPILE = "0x0000000000000000000000000000000000000167";
 
-// Admin wallet address
-export const ADMIN_ADDRESS = (process.env.NEXT_PUBLIC_ADMIN_ADDRESS || "0x9Bf9a6868d05ae19E1A3e4366eB911f7B31F26dA").toLowerCase();
+// Admin wallet address (set via NEXT_PUBLIC_ADMIN_ADDRESS env var)
+export const ADMIN_ADDRESS = (process.env.NEXT_PUBLIC_ADMIN_ADDRESS || "").toLowerCase();
 
 // FORE Reward Token (HTS)
 export const FORE_TOKEN_ID = process.env.NEXT_PUBLIC_FORE_TOKEN_ID || "";

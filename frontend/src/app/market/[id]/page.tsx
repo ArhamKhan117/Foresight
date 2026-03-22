@@ -1904,50 +1904,22 @@ export default function MarketDetail() {
               {/* Phase B: Oracle requested, no proposal yet */}
               {multiOracleRequestId && multiProposal && multiProposal.proposer === "0x0000000000000000000000000000000000000000" && (
                 <div className="flex flex-col gap-4">
-                  {market.marketTag === "demo" ? (
-                    <>
-                      <p className="text-[#838587] text-sm font-satoshi">Oracle request submitted — select the winning outcome to propose.</p>
-                      <div className="p-3 bg-[#111] rounded-xl">
-                        <span className="text-[#838587] text-xs font-satoshi">Bond required: </span>
-                        <span className="text-white text-xs font-semibold font-satoshi">{isAdmin ? "2 HBAR (admin)" : "10,000 HBAR"}</span>
-                      </div>
-                      <div className="flex flex-col gap-2">
-                        <span className="text-[#838587] text-xs font-satoshi uppercase tracking-wider">Select winning outcome</span>
-                        {multiEventInfo.outcomes.map((o: any, i: number) => (
-                          <button key={i} onClick={() => onMultiPropose(i)} disabled={multiResolutionLoading} className={`w-full px-3 py-2.5 bg-[#223a25] outline outline-[#3fd145] rounded-xl text-[#3fd145] text-sm font-semibold transition-all ${multiResolutionLoading ? "opacity-50" : "hover:bg-[#2a4a2e] cursor-pointer"}`}>
-                            Propose: {o.name}
-                          </button>
-                        ))}
-                        <button onClick={() => onMultiPropose(-1)} disabled={multiResolutionLoading} className={`w-full px-3 py-2.5 bg-[#3a2222] outline outline-[#ff6464] rounded-xl text-[#ff6464] text-sm font-semibold transition-all ${multiResolutionLoading ? "opacity-50" : "hover:bg-[#4a2a2a] cursor-pointer"}`}>
-                          Propose: No Winner
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="flex items-center gap-3 p-3 bg-[#111] rounded-xl">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#07b3ff]" />
-                        <p className="text-[#838587] text-sm font-satoshi">Oracle request submitted — awaiting a proposer to select the winning outcome.</p>
-                      </div>
-                      {isAdmin && (
-                        <div className="flex flex-col gap-2 pt-3 border-t border-[#313131]">
-                          <span className="text-[#838587] text-xs font-satoshi uppercase tracking-wider">Admin: Manual Propose</span>
-                          <div className="p-3 bg-[#111] rounded-xl">
-                            <span className="text-[#838587] text-xs font-satoshi">Bond required: </span>
-                            <span className="text-white text-xs font-semibold font-satoshi">2 HBAR (admin)</span>
-                          </div>
-                          {multiEventInfo.outcomes.map((o: any, i: number) => (
-                            <button key={i} onClick={() => onMultiPropose(i)} disabled={multiResolutionLoading} className={`w-full px-3 py-2.5 bg-[#223a25] outline outline-[#3fd145] rounded-xl text-[#3fd145] text-sm font-semibold transition-all ${multiResolutionLoading ? "opacity-50" : "hover:bg-[#2a4a2e] cursor-pointer"}`}>
-                              Propose: {o.name}
-                            </button>
-                          ))}
-                          <button onClick={() => onMultiPropose(-1)} disabled={multiResolutionLoading} className={`w-full px-3 py-2.5 bg-[#3a2222] outline outline-[#ff6464] rounded-xl text-[#ff6464] text-sm font-semibold transition-all ${multiResolutionLoading ? "opacity-50" : "hover:bg-[#4a2a2a] cursor-pointer"}`}>
-                            Propose: No Winner
-                          </button>
-                        </div>
-                      )}
-                    </>
-                  )}
+                  <p className="text-[#838587] text-sm font-satoshi">Oracle request submitted — select the winning outcome to propose.</p>
+                  <div className="p-3 bg-[#111] rounded-xl">
+                    <span className="text-[#838587] text-xs font-satoshi">Bond required: </span>
+                    <span className="text-white text-xs font-semibold font-satoshi">{isAdmin ? "2 HBAR (admin)" : "10,000 HBAR"}</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[#838587] text-xs font-satoshi uppercase tracking-wider">Select winning outcome</span>
+                    {multiEventInfo.outcomes.map((o: any, i: number) => (
+                      <button key={i} onClick={() => onMultiPropose(i)} disabled={multiResolutionLoading} className={`w-full px-3 py-2.5 bg-[#223a25] outline outline-[#3fd145] rounded-xl text-[#3fd145] text-sm font-semibold transition-all ${multiResolutionLoading ? "opacity-50" : "hover:bg-[#2a4a2e] cursor-pointer"}`}>
+                        Propose: {o.name}
+                      </button>
+                    ))}
+                    <button onClick={() => onMultiPropose(-1)} disabled={multiResolutionLoading} className={`w-full px-3 py-2.5 bg-[#3a2222] outline outline-[#ff6464] rounded-xl text-[#ff6464] text-sm font-semibold transition-all ${multiResolutionLoading ? "opacity-50" : "hover:bg-[#4a2a2a] cursor-pointer"}`}>
+                      Propose: No Winner
+                    </button>
+                  </div>
                 </div>
               )}
               {/* Phase C: Proposal exists, dispute window */}
