@@ -7,7 +7,7 @@
 
 # Foresight
 
-### Decentralized Prediction Market Platform on Hedera Hashgraph
+### Decentralized Prediction Market Platform on Hedera
 
 A full-stack decentralized prediction market with LMSR automated pricing,<br/>
 optimistic oracle resolution, and immutable HCS audit trails.
