@@ -15,7 +15,7 @@ const sidebarNavList = [
 ] as const;
 
 const socialLinks = [
-  { icon: FaGithub, href: "https://github.com", label: "GitHub" },
+  { icon: FaGithub, href: "https://github.com/ArhamKhan117/Foresight", label: "GitHub" },
   { icon: FaXTwitter, href: "https://x.com", label: "Twitter" },
   { icon: FaYoutube, href: "https://youtube.com", label: "YouTube" },
   { icon: IoDocumentTextOutline, href: "/about", label: "Docs" },
