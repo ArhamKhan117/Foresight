@@ -29,7 +29,7 @@ export default function Home() {
           <Market showRecentActivity={showRecentActivity} onToggleRecentActivity={() => setShowRecentActivity(!showRecentActivity)} />
         </div>
         {showRecentActivity && (
-          <div className="2xl:w-[420px] 2xl:flex-shrink-0 w-full flex flex-col justify-start items-start gap-4 p-5 rounded-2xl bg-[#1a1a1a] border border-[#2a2a2a] 2xl:sticky 2xl:top-4 2xl:max-h-[calc(100vh-120px)] 2xl:overflow-y-auto">
+          <div className="2xl:w-[420px] 2xl:flex-shrink-0 w-full flex flex-col justify-start items-start gap-4 p-5 rounded-2xl bg-[#1a1a1a] border border-[#2a2a2a] 2xl:self-start 2xl:sticky 2xl:top-0 2xl:max-h-[calc(100vh-120px)] 2xl:overflow-y-auto">
             <div className="self-stretch flex justify-between items-center">
               <div className="text-white text-xl font-semibold font-rubik leading-7">
                 Recent Activity

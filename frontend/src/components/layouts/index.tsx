@@ -8,7 +8,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <div className="flex justify-center overflow-x-hidden">
       <div className="flex md:flex-row flex-col relative max-w-[1920px] w-screen h-screen overflow-x-hidden">
         <HeaderSideBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
-        <main className={`h-full flex flex-col gap-6 pb-4 transition-all duration-300 overflow-y-auto ${isCollapsed ? 'md:ml-[72px]' : 'md:ml-[220px]'}`} style={{ width: isCollapsed ? 'calc(100% - 72px)' : 'calc(100% - 220px)' }}>
+        <main className={`flex-1 h-full flex flex-col gap-6 pb-4 transition-all duration-300 overflow-y-auto overflow-x-hidden ${isCollapsed ? 'md:ml-[72px]' : 'md:ml-[220px]'}`}>
           <HeaderTop isCollapsed={isCollapsed} />
           {children}
         </main>
