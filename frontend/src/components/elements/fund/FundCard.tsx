@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import Icon from "../Icons";
 import { CiStar } from "react-icons/ci";
 import { GiAlarmClock } from "react-icons/gi";
-import { GoArrowDownRight } from "react-icons/go";
 
+import CollapsibleDescription from "../CollapsibleDescription";
 import { formatFeedLabel } from "@/utils";
 import { marketField as marketFieldData } from "@/data/data";
 
@@ -44,7 +44,7 @@ const FundCard: React.FC<FundInfoProps> = ({
 
   return (
     <div className="sm:p-6 p-4 w-full bg-[#1e1e1e] rounded-2xl outline-1 flex-col lg:flex-row outline-offset-[-1px] outline-[#313131] flex justify-start items-start gap-8">
-      <img className="xl:w-[327px] w-[150px] h-[150px] xl:h-[327px] rounded-2xl hidden lg:flex" src={imageUrl} alt="Fund Image" />
+      <img className="xl:w-[200px] w-[120px] h-[120px] xl:h-[200px] rounded-2xl hidden lg:flex object-cover" src={imageUrl} alt="Fund Image" />
       <div className="flex-1 self-stretch inline-flex flex-col justify-start items-start gap-6">
         <div className="self-stretch inline-flex justify-start items-start gap-2 relative">
           <div className="flex-1 inline-flex flex-col justify-start items-start gap-2">
@@ -75,16 +75,15 @@ const FundCard: React.FC<FundInfoProps> = ({
         </div>
         <div className="self-stretch flex-1 flex flex-col justify-start items-start gap-4">
           <div className="self-stretch flex-1 flex flex-col justify-start items-start gap-2 overflow-hidden">
-            <div className="self-stretch justify-start text-[#838587] text-lg font-medium font-satoshi leading-relaxed">Descriptions:</div>
-            <div className="self-stretch justify-start">
-              <span className="text-white text-lg font-medium font-satoshi leading-relaxed">{description}</span>
-            </div>
+            <CollapsibleDescription
+              description={description}
+              label="Description"
+              labelClassName="text-[#838587] text-lg font-medium font-satoshi leading-relaxed"
+              textClassName="text-white text-lg font-medium font-satoshi leading-relaxed"
+            />
           </div>
           <div className="self-stretch inline-flex justify-between items-center">
-            <div className="flex justify-center cursor-pointer items-center gap-3">
-              <div className="justify-start text-[#3fd145] text-base font-medium font-satoshi leading-relaxed">Read more</div>
-              <GoArrowDownRight size={14} className="text-[#3fd145]" />
-            </div>
+            <div />
             <div className="text-center justify-start text-[#838587] text-sm font-medium font-satoshi">Note: This event is legally protected</div>
           </div>
         </div>

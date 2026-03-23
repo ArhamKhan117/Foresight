@@ -15,6 +15,7 @@ import { errorAlert, successAlert } from "@/components/elements/ToastGroup";
 import axios from "axios";
 import { API_ENDPOINTS } from "@/config/api";
 import { MarketDataType } from "@/types/type";
+import CollapsibleDescription from "@/components/elements/CollapsibleDescription";
 
 export default function FundDetail() {
   const [market, setMarket] = useState<MarketDataType | null>(null);
@@ -301,8 +302,11 @@ export default function FundDetail() {
 
             {/* Description */}
             <div className="self-stretch flex flex-col justify-start items-start gap-2">
-              <div className="text-[#838587] text-lg font-medium font-satoshi leading-relaxed">Description</div>
-              <div className="text-white text-lg font-medium font-satoshi leading-relaxed">{market.description}</div>
+              <CollapsibleDescription
+                description={market.description}
+                labelClassName="text-[#838587] text-lg font-medium font-satoshi leading-relaxed"
+                textClassName="text-white text-lg font-medium font-satoshi leading-relaxed"
+              />
               <div className="self-stretch inline-flex justify-end">
                 <div className="text-[#838587] text-sm font-medium font-satoshi">Note: This event is legally protected</div>
               </div>

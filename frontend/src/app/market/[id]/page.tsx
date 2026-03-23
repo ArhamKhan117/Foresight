@@ -26,6 +26,7 @@ import { getCountDown, elipsKey, timeAgo } from "@/utils";
 import { MarketDataType } from "@/types/type";
 import ProgressBar from "@/components/elements/marketInfo/ProgressBar";
 import PriceChart from "@/components/elements/marketInfo/PriceChart";
+import CollapsibleDescription from "@/components/elements/CollapsibleDescription";
 import { CiStar } from "react-icons/ci";
 import { ImAlarm } from "react-icons/im";
 import { FaMinus, FaPlus } from "react-icons/fa";
@@ -1158,10 +1159,7 @@ export default function MarketDetail() {
 
             {/* Description */}
             {market.description && (
-              <div className="flex flex-col gap-2">
-                <span className="text-[#838587] text-lg font-medium font-satoshi">Description</span>
-                <span className="text-white text-base font-satoshi leading-relaxed">{market.description}</span>
-              </div>
+              <CollapsibleDescription description={market.description} />
             )}
           </div>
 
