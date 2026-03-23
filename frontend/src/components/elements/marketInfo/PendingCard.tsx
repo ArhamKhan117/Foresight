@@ -81,7 +81,7 @@ const PendingCard: React.FC<PendingCardProps> = ({
     >
       <div className="self-stretch flex-1 flex flex-col justify-start items-start gap-4">
         <div className="self-stretch flex items-start gap-3">
-          <img className="lg:w-14 lg:h-14 w-12 h-12 rounded-lg flex-shrink-0 object-cover" src={imageUrl} alt={category} />
+          <img className="lg:w-14 lg:h-14 w-12 h-12 rounded-lg flex-shrink-0 object-contain" src={imageUrl} alt={category} />
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2 lg:text-base text-xs font-semibold font-Inter leading-normal">

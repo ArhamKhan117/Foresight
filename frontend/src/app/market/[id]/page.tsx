@@ -932,7 +932,7 @@ export default function MarketDetail() {
                 </h1>
               </div>
               <div className="flex gap-2 items-center ml-4">
-                {market.imageUrl && <img src={market.imageUrl} alt="" className="w-16 h-16 rounded-xl object-cover" />}
+                {market.imageUrl && <img src={market.imageUrl} alt="" className="w-16 h-16 rounded-xl object-contain" />}
                 <CiStar className="text-white text-2xl cursor-pointer hover:text-[#ffd600] transition-colors" />
               </div>
             </div>

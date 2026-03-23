@@ -152,7 +152,7 @@ const MultiOutcomeCard: React.FC<MultiOutcomeCardProps> = ({
       {/* Header: Image + Category + Question */}
       <div className="self-stretch flex items-start gap-3">
         <img
-          className={`rounded-lg flex-shrink-0 object-cover ${compact ? "w-8 h-8" : "lg:w-14 lg:h-14 w-10 h-10"}`}
+          className={`rounded-lg flex-shrink-0 object-contain ${compact ? "w-8 h-8" : "lg:w-14 lg:h-14 w-10 h-10"}`}
           src={imageUrl}
           alt={feedName}
         />

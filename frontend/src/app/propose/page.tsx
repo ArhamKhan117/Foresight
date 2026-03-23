@@ -493,7 +493,7 @@ export default function Propose() {
           <div className="flex flex-col gap-2 lg:w-[200px] flex-shrink-0">
             <label className={labelCls}>Market Image</label>
             <label className="w-full h-[160px] bg-[#111] rounded-xl cursor-pointer border border-dashed border-[#2a2a2a] flex flex-col justify-center items-center gap-2 relative hover:border-[#07b3ff]/40 transition-all">
-              {previewUrl && <img src={previewUrl} alt="Preview" className="absolute inset-0 w-full h-full object-cover rounded-xl" />}
+              {previewUrl && <img src={previewUrl} alt="Preview" className="absolute inset-0 w-full h-full object-contain rounded-xl" />}
               <FiUpload size={22} color="#07b3ff" />
               <span className="text-[#555] text-xs text-center px-2">
                 <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />

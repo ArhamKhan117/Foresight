@@ -211,7 +211,7 @@ export default function FundDetail() {
             {/* Header with image */}
             <div className="self-stretch flex justify-start items-start gap-6">
               <img
-                className="w-24 h-24 mt-3 rounded-xl object-cover flex-shrink-0"
+                className="w-24 h-24 mt-3 rounded-xl object-contain flex-shrink-0"
                 src={market.imageUrl || "https://placehold.co/96x96"}
                 alt={market.feedName}
               />

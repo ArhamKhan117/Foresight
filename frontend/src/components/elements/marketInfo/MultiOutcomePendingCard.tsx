@@ -123,7 +123,7 @@ const MultiOutcomePendingCard: React.FC<MultiOutcomePendingCardProps> = ({
       {/* Header: Image + Category + Question */}
       <div className="self-stretch flex items-start gap-3">
         <img
-          className="lg:w-14 lg:h-14 w-12 h-12 rounded-lg flex-shrink-0 object-cover"
+          className="lg:w-14 lg:h-14 w-12 h-12 rounded-lg flex-shrink-0 object-contain"
           src={imageUrl}
           alt={feedName}
         />
