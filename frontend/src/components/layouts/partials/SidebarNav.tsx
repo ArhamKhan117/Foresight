@@ -6,7 +6,7 @@ import { FaGithub, FaYoutube, FaXTwitter } from "react-icons/fa6";
 import { IoDocumentTextOutline } from "react-icons/io5";
 
 const sidebarNavList = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/markets" },
   { label: "FundMarket", href: "/fund" },
   { label: "ProposeMarket", href: "/propose" },
   { label: "Referral", href: "/referral" },
