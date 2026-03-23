@@ -147,11 +147,11 @@ export default function MarketDetail() {
           setMarket(res.data.data[0]);
         } else {
           errorAlert("Market not found");
-          router.replace("/");
+          router.replace("/markets");
         }
       } catch (error) {
         console.error("Error fetching market:", error);
-        router.replace("/");
+          router.replace("/markets");
       } finally {
         setLoading(false);
       }
@@ -897,7 +897,7 @@ export default function MarketDetail() {
     <div className="self-stretch px-[50px] flex flex-col gap-[40px] pb-10" style={{ overflow: "visible" }}>
       {/* Breadcrumb */}
       <div className="flex items-center gap-2">
-        <div onClick={() => router.push("/")} className="text-[#838587] text-lg font-rubic cursor-pointer hover:text-white transition-colors">Markets</div>
+        <div onClick={() => router.push("/markets")} className="text-[#838587] text-lg font-rubic cursor-pointer hover:text-white transition-colors">Markets</div>
         <div className="text-[#838587] text-lg font-rubic">{">"}</div>
         <div className="text-white text-lg font-rubic truncate max-w-[400px]">{isMulti ? (market.eventQuestion || market.question) : market.question}</div>
       </div>

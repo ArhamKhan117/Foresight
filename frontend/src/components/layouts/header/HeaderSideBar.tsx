@@ -25,12 +25,12 @@ const HeaderSideBar = ({ isCollapsed, setIsCollapsed, isCancel, setIsCanceled }:
         className={`md:flex hidden flex-none items-center h-14 gap-2 px-4 shrink-0 self-stretch transition-all duration-300 ${isCollapsed ? "justify-center" : "justify-start"}`}
       >
         <div className="flex items-center gap-2 cursor-pointer">
-          <Link href="/">
+          <Link href="/markets">
             <Icon name="Logo" size={32} />
           </Link>
           {!isCollapsed && (
             <Link
-              href="/"
+              href="/markets"
               className="text-2xl leading-7 font-normal font-['anton'] text-white uppercase"
             >
               foresight
@@ -50,11 +50,11 @@ const HeaderSideBar = ({ isCollapsed, setIsCollapsed, isCancel, setIsCanceled }:
           <RxCross2 className="text-white" />
         </div>
         <div className="flex-1 flex justify-start items-center gap-0.5">
-          <Link href="/">
+          <Link href="/markets">
             <Icon name="Logo" size={20} />
           </Link>
           <Link
-            href="/"
+            href="/markets"
             className="text-lg leading-7 font-normal font-['anton'] text-white uppercase"
           >
             foresight

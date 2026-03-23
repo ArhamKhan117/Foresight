@@ -111,8 +111,8 @@ const HeaderTop: React.FC<HeaderTopProps> = ({ isCollapsed }) => {
             <RxHamburgerMenu size={16} className="text-white" />
           </div>
           <div className="flex-1 md:hidden flex justify-start items-center gap-2">
-            <Link href="/"><Icon name="Logo" size={24} /></Link>
-            <Link href="/" className="text-xl leading-9 font-normal font-['anton'] text-white uppercase">Hedera PM</Link>
+            <Link href="/markets"><Icon name="Logo" size={24} /></Link>
+            <Link href="/markets" className="text-xl leading-9 font-normal font-['anton'] text-white uppercase">Hedera PM</Link>
           </div>
         </div>
 
