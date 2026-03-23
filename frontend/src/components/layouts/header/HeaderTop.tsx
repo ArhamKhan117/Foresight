@@ -101,7 +101,7 @@ const HeaderTop: React.FC<HeaderTopProps> = ({ isCollapsed }) => {
   };
 
   // Compact mode: home page with sidebar expanded
-  const compact = pathname === "/" && !isCollapsed;
+  const compact = pathname === "/markets" && !isCollapsed;
 
   return (
     <div className="flex flex-col relative">
@@ -118,7 +118,7 @@ const HeaderTop: React.FC<HeaderTopProps> = ({ isCollapsed }) => {
 
         <div className={`md:flex hidden justify-start items-center ${compact ? "gap-3 min-w-0 flex-1" : "gap-5"}`}>
           {/* Market Tab Switch */}
-          {pathname === "/" && (
+          {pathname === "/markets" && (
             <div className="p-0.5 bg-[#111111] rounded-[18px] outline-1 outline-offset-[-1px] outline-[#313131] flex flex-shrink-0">
               <button
                 onClick={() => setActiveTab("ACTIVE")}
