@@ -20,7 +20,7 @@ optimistic oracle resolution, and immutable HCS audit trails.
 
 Built for the **Hedera Hello Future Apex Hackathon 2026** — Theme 2: DeFi & Tokenization
 
-[Pitch Deck](https://docs.google.com/presentation/d/) · [Demo Video](https://youtube.com/) · [Live App](https://foresight-azure.vercel.app)
+[Pitch Deck](https://drive.google.com/file/d/10xOyjlBnWTBelhwJqZnZi6h0b86uMDnF/view?usp=sharing) · [Demo Video](https://youtu.be/J_YThAfCS68) · [Live App](https://foresight-markets.vercel.app)
 
 </div>
 
@@ -659,9 +659,9 @@ This project is built for the **Hedera Hello Future Apex Hackathon 2026** — Th
 | Resource | Link |
 |:---------|:-----|
 | GitHub Repository | [github.com/ArhamKhan117/Foresight](https://github.com/ArhamKhan117/Foresight) |
-| Pitch Deck | [Google Slides](https://docs.google.com/presentation/d/) |
-| Demo Video | [YouTube](https://youtube.com/) |
-| Live Website | [foresight.vercel.app](https://foresight.vercel.app) |
+| Pitch Deck | [Google Drive](https://drive.google.com/file/d/10xOyjlBnWTBelhwJqZnZi6h0b86uMDnF/view?usp=sharing) |
+| Demo Video | [YouTube](https://youtu.be/J_YThAfCS68) |
+| Live Website | [foresight-markets.vercel.app](https://foresight-markets.vercel.app) |
 
 ---
 
